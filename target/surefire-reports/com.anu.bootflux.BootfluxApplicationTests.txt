@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.anu.bootflux.BootfluxApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 38.77 s - in com.anu.bootflux.BootfluxApplicationTests
