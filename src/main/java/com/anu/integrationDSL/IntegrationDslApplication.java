@@ -27,6 +27,7 @@ import org.springframework.messaging.MessageHandler;
 @IntegrationComponentScan
 @SpringBootApplication
 public class IntegrationDslApplication {
+	/*
 
     public static final String INPUT_DIR = "/home/anupam/development/java/photon/works/integrationDSL/inputD";
     public static final String OUTPUT_DIR = "/home/anupam/development/java/photon/works/integrationDSL/outputD";
@@ -137,6 +138,7 @@ public class IntegrationDslApplication {
         }
         System.exit(0);
 	}
+	*/
 
 }
 
