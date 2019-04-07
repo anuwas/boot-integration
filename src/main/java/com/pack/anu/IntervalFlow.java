@@ -15,7 +15,10 @@ import org.springframework.jms.core.JmsTemplate;
 @Configuration
 public class IntervalFlow {
 	
+	@Autowired
+	private ConnectionFactory jmsConnectionFactory;
 	
+//JMSDestinationPollingSource
 	@Bean
     public IntegrationFlow jmsInboundFlow() {
         return IntegrationFlows
@@ -29,5 +32,18 @@ public class IntervalFlow {
                 .channel("jmsOutboundInboundReplyChannel")
                 .get();
     }
+	
+	@Bean
+	public IntegrationFlow jmsMessageDrivenRedeliveryFlow() {
+		return IntegrationFlows
+				.from(Jms.messageDrivenChannelAdapter(this.jmsConnectionFactory)
+						.errorChannel(IntegrationContextUtils.ERROR_CHANNEL_BEAN_NAME)
+						.configureListenerContainer(c -> c.clientId("foo"))
+						.destination("jmsMessageDriverRedelivery"))
+				.<String, String>transform(p -> {
+					throw new RuntimeException("intentional");
+				})
+				.get();
+	}
 
 }
